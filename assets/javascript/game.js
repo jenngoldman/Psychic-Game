@@ -1,8 +1,15 @@
-var wins, losses = 0;
-var guessesLeft = 9;
+var wins = 0;
+var losses = 0;
+var guessesLeft = 10;
 var guessesSoFar = [];
 // letterToGuess is the result of the getRandomLetter function.
 var letterToGuess = getRandomLetter();
+
+document.addEventListener("DOMContentLoaded", function(){ 
+    updateGuessesLeft();
+    updateWins();
+    updateLosses();
+}, false);
 
 function getRandomLetter() {
     var letters = "abcdefghijklmnopqrstuvwxyz";
@@ -14,21 +21,41 @@ function getRandomLetter() {
 
 document.onkeydown = function(event) {
     var keyPressed = String.fromCharCode(event.which).toLowerCase();
+
     if (keyPressed == letterToGuess) {
         wins++;
+        updateWins();
         resetGame();
     } 
     else if (guessesLeft == 1) {
         losses++;
+        updateLosses();
         resetGame();
     }
     else {
         guessesLeft--;
+        updateGuessesLeft();
         guessesSoFar.push(keyPressed);
+        document.getElementById("guesses-so-far").textContent = guessesSoFar.join(", ");
     }
 };
 
 function resetGame() {
     letterToGuess = getRandomLetter();
-    guessesLeft = 9;
+    guessesLeft = 10;
+    updateGuessesLeft();
+    guessesSoFar = [];
+    document.getElementById("guesses-so-far").textContent = "";
 }
+
+function updateGuessesLeft() {
+    document.getElementById("guesses-left").textContent = guessesLeft;
+};
+
+function updateWins() {
+    document.getElementById("wins").textContent = wins;
+};
+
+function updateLosses() {
+    document.getElementById("losses").textContent = losses;
+};

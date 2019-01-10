@@ -1,0 +1,29 @@
+body {
+    background-image: url("../images/gemstones.jpeg"); 
+    
+}
+
+.game-container {
+    background-color: #7f4071;
+    margin: auto;
+    margin-top: 50px;
+    padding: 5px;
+    text-align: center;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #0e061c;
+}
+
+h1 {
+    font-size: 30pt;
+    margin: 15px;
+    margin-bottom: 25px;
+    color: #13071f;
+    font-weight: bold;
+}
+
+p {
+    color: #eaa891;
+    margin: 15px;
+    font-size: 16pt;
+}
